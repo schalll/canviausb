@@ -1,0 +1,20 @@
+<RCC>
+  <qresource>
+    <file>arrow_left.png</file>
+    <file>arrow_right.png</file>
+    <file>settings.png</file>
+    <file>start_green.png</file>
+    <file>stop_red.png</file>		
+		<file>disk.png</file>
+		<file>document.png</file>				
+		<file>folder.png</file>		
+		<file>clear_identifiers.png</file>		
+		<file>window_delete.png</file>				
+		<file>printer.png</file>
+		<file>logo.png</file>	
+		<file>filter.png</file>
+		<file>filter_add.png</file>	
+		<file>filter_edit.png</file>
+		<file>find_doc.png</file>
+	</qresource>
+</RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource>
+		<file>report.css</file>
+		<file>images/img08.jpg</file>
+        <file>identifiers.html</file>
+    </qresource>
+</RCC>
