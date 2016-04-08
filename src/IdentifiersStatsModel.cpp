@@ -24,8 +24,8 @@
 #include "IdentifiersStatsModel.h"
 
 
-IdentifiersStatsModel::IdentifiersStatsModel(QObject *parent): QAbstractTableModel(parent) 
-{	
+IdentifiersStatsModel::IdentifiersStatsModel(QObject *parent): QAbstractTableModel(parent)
+{
     id_model = IdentifiersModel::instance();
     settings = AppSettings::instance();
 }
@@ -42,7 +42,7 @@ IdentifiersStatsModel::instance(QWidget* parent) {
     return singleton;
 }
 
-int 
+int
 IdentifiersStatsModel::rowCount(const QModelIndex &index) const
 {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::rowCount")
@@ -51,7 +51,7 @@ IdentifiersStatsModel::rowCount(const QModelIndex &index) const
     return m_identifiersStats.count();
 }
 
-int 
+int
 IdentifiersStatsModel::columnCount(const QModelIndex &index) const
 {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::columnCount")
@@ -59,9 +59,9 @@ IdentifiersStatsModel::columnCount(const QModelIndex &index) const
     return 7;
 }
 
-QVariant 
-IdentifiersStatsModel::data(const QModelIndex &index, int role) const 
-{		
+QVariant
+IdentifiersStatsModel::data(const QModelIndex &index, int role) const
+{
     QMutexLocker locker(&mutex);
     DEBUG_IDENTIFIERSTATSMODEL(">>IdentifiersStatsModel::data")
 
@@ -278,7 +278,7 @@ IdentifiersStatsModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-QVariant 
+QVariant
 IdentifiersStatsModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::headerData")
@@ -298,7 +298,7 @@ IdentifiersStatsModel::headerData(int section, Qt::Orientation orientation, int 
     return QVariant();
 }
 
-Qt::ItemFlags 
+Qt::ItemFlags
 IdentifiersStatsModel::flags(const QModelIndex &index) const
 {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::flags")
@@ -311,7 +311,7 @@ IdentifiersStatsModel::flags(const QModelIndex &index) const
 
 /*
 
-bool 
+bool
 IdentifiersStatsModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
   DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::setData")
@@ -363,7 +363,7 @@ IdentifiersStatsModel::setData(const QModelIndex &index, const QVariant &value, 
 
 */
 
-bool 
+bool
 IdentifiersStatsModel::insertRows(int position, int rows, const QModelIndex &index) {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::insertRows")
             Q_UNUSED(index);
@@ -380,7 +380,7 @@ IdentifiersStatsModel::insertRows(int position, int rows, const QModelIndex &ind
 
 
 
-bool 
+bool
 IdentifiersStatsModel::addFrame(const Can_Frame &frame) {
 
     QString tmp = QString(">>IdentifiersStatsModel::addFrame id = %1").arg(frame.id);
@@ -424,7 +424,7 @@ IdentifiersStatsModel::addFrame(const Can_Frame &frame) {
     return true;
 }
 
-bool 
+bool
 IdentifiersStatsModel::findDLC(const int identifier, const bool extended, int &dlc) {
     DEBUG_IDENTIFIERSTATSMODEL(">>IdentifiersStatsModel::findDLC")
             QMutexLocker locker(&mutex);
@@ -445,7 +445,7 @@ IdentifiersStatsModel::findDLC(const int identifier, const bool extended, int &d
 }
 
 
-bool 
+bool
 IdentifiersStatsModel::removeRows(int position, int rows, const QModelIndex &index) {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::removeRows")
             Q_UNUSED(index);
@@ -459,7 +459,7 @@ IdentifiersStatsModel::removeRows(int position, int rows, const QModelIndex &ind
     return true;
 }
 
-void 
+void
 IdentifiersStatsModel::clear() {
     DEBUG_IDENTIFIERSTATSMODEL("IdentifiersStatsModel::clear")
             QMutexLocker locker(&mutex);
@@ -558,8 +558,9 @@ IdentifiersStatsModel::sort(int column, Qt::SortOrder order) {
 
 QString
 IdentifiersStatsModel::getIdentifierStatistics(unsigned int identifier, bool extended) {
-    QString tmp;
-    tmp = QString(tr("Some statistics"));
+    Q_UNUSED(identifier)
+    Q_UNUSED(extended)
+    QString tmp(tr("Some statistics"));
     return tmp;
 
 }
