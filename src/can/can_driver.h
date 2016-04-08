@@ -24,7 +24,9 @@
 #define DEBUG_CAN_GENERIC(x) { if (DEBUG_CAN_GENERIC_ON) qDebug(x); }
 
 // QT includes
+#include <QString>
 #include <QThread>
+#include <QWidget>
 
 // non QT includes
 #include "can_frame.h"
