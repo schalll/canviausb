@@ -26,7 +26,7 @@ QT_BEGIN_NAMESPACE
 class QString;
 class QWidget;
 QT_END_NAMESPACE
-class Can_Frame;
+struct Can_Frame;
 
 //! The CAN driver plugin interface class
 /*!
