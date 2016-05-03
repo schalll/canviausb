@@ -24,13 +24,13 @@
 #include <QDateTime>
 
 // Non QT includes
-#include <string.h>
+#include <cstring>
 
 struct Can_Frame{
 
     Can_Frame();
-    Can_Frame(char _direction, QDateTime _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char *_data);
-    Can_Frame(char _direction, QDateTime _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char d0 = 0, unsigned char d1 = 0,unsigned char d2 = 0,unsigned char d3 = 0, unsigned char d4 = 0, unsigned char d5 = 0,unsigned char d6 = 0,unsigned char d7 = 0);
+    Can_Frame(char _direction, const QDateTime& _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char *_data);
+    Can_Frame(char _direction, const QDateTime& _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char d0 = 0, unsigned char d1 = 0,unsigned char d2 = 0,unsigned char d3 = 0, unsigned char d4 = 0, unsigned char d5 = 0,unsigned char d6 = 0,unsigned char d7 = 0);
     QString toString(bool PCTimestamp, bool AdapterTimestamp, bool IDHex, bool MessageHex, bool MessageAscii, bool IDName) const;
 
     char direction;

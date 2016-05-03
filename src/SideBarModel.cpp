@@ -82,7 +82,6 @@ QVariant SideBarModel::data(const QModelIndex &index, int role) const
     int itemType = item->type();
 
     QString tmp;
-    unsigned int tmpBaudrate;
 
     // Display role - returns a text
     if (role == Qt::DisplayRole) {
@@ -254,18 +253,18 @@ bool SideBarModel::setHeaderData(int section, Qt::Orientation orientation,
     return result;
 }
 
-int 
+int
 SideBarModel::filteredListsCount() {
     return m_filteredListsCount;
 }
 
-int 
+int
 SideBarModel::pluginsCount() {
     return m_pluginsCount;
 }
 
 
-unsigned int 
+unsigned int
 SideBarModel::addFilteredList(const QString &name) {
     // Find the STATISTICS Item -  This is the first item after the last Filtered list
     qDebug() << QString("There is a total of %1 childs").arg(rootItem->childCount());
@@ -292,7 +291,7 @@ SideBarModel::addFilteredList(const QString &name) {
     }
 }
 
-unsigned int 
+unsigned int
 SideBarModel::addFilteredList(const QString &name, QList<identifierStruct> filter) {
     // Find the STATISTICS Item -  This is the first item after the last Filtered list
     qDebug() << QString("There is a total of %1 childs").arg(rootItem->childCount());
@@ -321,7 +320,7 @@ SideBarModel::addFilteredList(const QString &name, QList<identifierStruct> filte
     }
 }
 
-void 
+void
 SideBarModel::removeFilteredLists()
 {
     QModelIndex tmp_index;
@@ -346,12 +345,12 @@ SideBarModel::removeFilteredList(const QModelIndex &index) {
     emit contentChanged();
 }
 
-Can_DriverFactory * 
+Can_DriverFactory *
 SideBarModel::canFactory() {
     return Can_DriverFactory::instance();
-} 
+}
 
-void  
+void
 SideBarModel::writeXMLStream( QXmlStreamWriter* stream )
 {
     QModelIndex tmp_index;
@@ -376,7 +375,7 @@ SideBarModel::writeXMLStream( QXmlStreamWriter* stream )
     }
 }
 
-void 
+void
 SideBarModel::readXMLStream(QXmlStreamReader* stream)
 {
     QString tmp_name;
@@ -389,7 +388,7 @@ SideBarModel::readXMLStream(QXmlStreamReader* stream)
     }
 
     QStringList tmp_filterList = tmp_filter.split(",");
-    unsigned int tmp_size = tmp_filterList.size(); 
+    unsigned int tmp_size = tmp_filterList.size();
     if ((tmp_size % 2) == 0) {
         identifierStruct tmp_identifier;
         for (int i = 0; i < tmp_size; i=i+2) {
@@ -404,7 +403,7 @@ SideBarModel::readXMLStream(QXmlStreamReader* stream)
     addFilteredList(tmp_name, filter);
 }
 
-void 
+void
 SideBarModel::addPlugin(PluginInterface* itf) {
     // Find the STATISTICS Item -  This is the first item after the last Filtered list
     qDebug() << QString("There is a total of %1 childs").arg(rootItem->childCount());
@@ -442,7 +441,7 @@ SideBarModel::addPlugin(PluginInterface* itf) {
     }
 }
 
-void 
+void
 SideBarModel::sendOnCanFromPlugin(can_msg msg) {
     canFactory()->send(
                 Can_Frame(

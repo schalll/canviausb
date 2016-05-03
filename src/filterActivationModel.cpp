@@ -28,21 +28,22 @@ FilterActivationModel::FilterActivationModel(CommunicationProxyModel* communicat
 	settings = AppSettings::instance();
 }
 
-int 
+int
 FilterActivationModel::rowCount(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
 	return m_comModel->getFilter().count();
 }
 
-int 
+int
 FilterActivationModel::columnCount(const QModelIndex &index) const
 {
     Q_UNUSED(index);
     return 1;
 }
 
-QVariant 
-FilterActivationModel::data(const QModelIndex &index, int role) const 
+QVariant
+FilterActivationModel::data(const QModelIndex &index, int role) const
 {
 
 	int col = index.column();
@@ -51,13 +52,13 @@ FilterActivationModel::data(const QModelIndex &index, int role) const
 	identifierStruct m_id = m_comModel->getFilter().at(row);
 
 	if (col == 0) {
-		if (role == Qt::CheckStateRole)	
+		if (role == Qt::CheckStateRole)
 			if (m_comModel->getFilterExclusion().contains(m_id)) {
 				return QVariant(Qt::Unchecked);
 			} else {
 				return QVariant(Qt::Checked);
 			}
-		if (role == Qt::DecorationRole) return id_model->getColorIcon(m_id.identifier, m_id.extended);  // getColorIcon is used instead of getIdColor because of QT bug 8357 http://bugreports.qt.nokia.com/browse/QTBUG-8357 
+		if (role == Qt::DecorationRole) return id_model->getColorIcon(m_id.identifier, m_id.extended);  // getColorIcon is used instead of getIdColor because of QT bug 8357 http://bugreports.qt.nokia.com/browse/QTBUG-8357
 		if ((role == Qt::DisplayRole) || (role == Qt::ToolTipRole)) {
 				QString infoLabel;
 				if (!m_id.extended) {
@@ -83,7 +84,7 @@ FilterActivationModel::data(const QModelIndex &index, int role) const
 	return QVariant();
 }
 
-QVariant 
+QVariant
 FilterActivationModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
@@ -97,7 +98,7 @@ FilterActivationModel::headerData(int section, Qt::Orientation orientation, int 
 }
 
 
-Qt::ItemFlags 
+Qt::ItemFlags
 FilterActivationModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
@@ -108,6 +109,6 @@ FilterActivationModel::flags(const QModelIndex &index) const
 		return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable;
 
 
-	
+
 	return Qt::ItemIsEnabled;
 }

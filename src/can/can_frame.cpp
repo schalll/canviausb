@@ -28,20 +28,20 @@
 Can_Frame::Can_Frame()  {
 }
 
-Can_Frame::Can_Frame(char _direction, QDateTime _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char *_data)
+Can_Frame::Can_Frame(char _direction, const QDateTime& _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char *_data)
         : direction(_direction), time_pc(_time_pc), ext(_ext), rtr(_rtr), id(_id), dlc(_dlc) {
 
     (void)memcpy(&data[0], _data, _dlc);
 }
 
-Can_Frame::Can_Frame(char _direction, QDateTime _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char d0, unsigned char d1,unsigned char d2,unsigned char d3, unsigned char d4, unsigned char d5,unsigned char d6,unsigned char d7)
+Can_Frame::Can_Frame(char _direction, const QDateTime& _time_pc, bool _ext, bool _rtr, unsigned int _id, unsigned char _dlc, unsigned char d0, unsigned char d1,unsigned char d2,unsigned char d3, unsigned char d4, unsigned char d5,unsigned char d6,unsigned char d7)
         : direction(_direction), time_pc(_time_pc), ext(_ext), rtr(_rtr), id(_id), dlc(_dlc) {
 
     data[0] = d0; data[1] = d1; data[2] = d2; data[3] = d3;
     data[4] = d4; data[5] = d5; data[6] = d6; data[7] = d7;
 }
 
-QString 
+QString
         Can_Frame::toString(bool PCTimestamp, bool AdapterTimestamp, bool IDHex, bool MessageHex, bool MessageAscii, bool IDName) const
 {
     Q_UNUSED(AdapterTimestamp);

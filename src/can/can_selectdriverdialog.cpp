@@ -18,14 +18,14 @@
 */
 
 // QT includes
-#include <QPushButton>>
+#include <QPushButton>
 
 // non QT includes
 #include "can_selectdriverdialog.h"
 
 // QDialog using QStringList example @ http://doc.trolltech.com/qq/qq11-stringlistedit.html
 
-Can_SelectCanDriverDialog::Can_SelectCanDriverDialog(QWidget *parent) 
+Can_SelectCanDriverDialog::Can_SelectCanDriverDialog(QWidget *parent)
         : QDialog(parent)
 {
     setWindowTitle(tr("Select CAN device"));
@@ -63,7 +63,7 @@ Can_DriverFactory *
     return Can_DriverFactory::instance(this);
 }
 
-void 
+void
         Can_SelectCanDriverDialog::setList(const QStringList &list)
 {
     listBox->clear();
@@ -72,7 +72,7 @@ void
     }
 }
 
-void 
+void
         Can_SelectCanDriverDialog::selectClicked() {
     // Get the name of the current selected driver
     QString driverName = listBox->currentItem()->text();
@@ -83,7 +83,7 @@ void
     close();
 }
 
-void 
+void
         Can_SelectCanDriverDialog::setVisible(bool visible) {
     // First select the current driver
     for(int i=0; i<listBox->count(); i++){

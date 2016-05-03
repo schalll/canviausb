@@ -52,34 +52,41 @@ PluginModel::~PluginModel()
 int
 PluginModel::rowCount( const QModelIndex &index) const
 {
+    Q_UNUSED(index)
 	return 0;
 }
 
 int
 PluginModel::columnCount( const QModelIndex &index) const
 {
+    Q_UNUSED(index)
 	return 0;
 }
 
-QVariant 
+QVariant
 PluginModel::data(const QModelIndex &index, int role) const
 {
+    Q_UNUSED(index)
+    Q_UNUSED(role)
 	return QVariant();
 }
 
-QVariant 
+QVariant
 PluginModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    Q_UNUSED(section)
+    Q_UNUSED(orientation)
+    Q_UNUSED(role)
 	return QVariant();
 }
 
-Qt::ItemFlags 
+Qt::ItemFlags
 PluginModel::flags( const QModelIndex& ) const
 {
 	return 0;
 }
 
-bool 
+bool
 PluginModel::loadPlugin()
 {
 	bool pluginFound = false;
@@ -97,7 +104,7 @@ PluginModel::loadPlugin()
      }
  #endif
      pluginsDir.cd("plugins");
-	
+
      foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
          QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
          QObject *plugin = pluginLoader.instance();
@@ -117,28 +124,28 @@ PluginModel::loadPlugin()
 	 return pluginFound;
 }
 
-QList<PluginInterface *> 
+QList<PluginInterface *>
 PluginModel::getPlugins() {
 	return pluginList;
 }
 
 
-QColor  
+QColor
 PluginModel::getIdColor(unsigned int identifier, bool extended) {
 	return id_model->getIdColor(identifier, extended);
 }
 
-QIcon   
+QIcon
 PluginModel::getIdColorIcon(unsigned int identifier, bool extended) {
 	return id_model->getColorIcon(identifier, extended);
 }
 
-QString 
+QString
 PluginModel::getIdName(unsigned int identifier, bool extended) {
 	return id_model->getIdName(identifier, extended);
 }
 
-bool 
+bool
 PluginModel::displayTimestamp() {
 	return m_settings->displayPCTimestamp();
 }

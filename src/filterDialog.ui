@@ -116,7 +116,7 @@
   <customwidget>
    <class>FilterListWidget</class>
    <extends>QListWidget</extends>
-   <header>../apps/src/filterListWidget.h</header>
+   <header>../src/filterListWidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>
